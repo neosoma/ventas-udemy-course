@@ -5,6 +5,8 @@ package com.ventas.ventas.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ventas.ventas.model.Cliente;
@@ -46,12 +47,12 @@ public class ClienteController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Cliente> create (@RequestBody Cliente cliente ){
+	public ResponseEntity<Cliente> create (@Valid @RequestBody Cliente cliente ){
 		return new ResponseEntity<>(clienteService.create(cliente), HttpStatus.CREATED);
 	}
 	
 	@PutMapping
-	public ResponseEntity<Cliente> update (@RequestBody Cliente cliente) {
+	public ResponseEntity<Cliente> update (@Valid @RequestBody Cliente cliente) {
 		return clienteService.findById(cliente.getIdCliente())
 					.map(c -> ResponseEntity.ok(clienteService.update(cliente)))
 					.orElseGet(()-> ResponseEntity.notFound().build());

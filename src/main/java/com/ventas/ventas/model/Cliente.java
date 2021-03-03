@@ -6,6 +6,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 /**
  * 
@@ -21,19 +25,31 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // Hacemos que sea generado de forma automática, autoincremental)
 	private Integer idCliente;
 	
+	@NotNull (message="El nombre no puede ser nulo.")
+	@NotBlank(message="El nombre es obligatorio y no puede estar vacío.")
+	@Size(min= 3, max= 70, message="Introduce un nombre que contenga al menos 3 caracteres.")
 	@Column(name ="nombre", nullable = false, length = 70)
 	private String nombre;
-	
+
+	@NotNull (message="El apellido no puede ser nulo.")
+	@NotBlank(message="El apellido es obligatorio y no puede estar vacío.")
+	@Size(min= 3, max= 150, message="Introduce un apellido que contenga al menos 3 caracteres.")
 	@Column(name ="apellidos", nullable = false, length = 150)
 	private String apellidos;
 	
+	@Size(max= 150, message="La dirección no puede superar los 150 caraceres.")
 	@Column(name ="direccion", nullable = true, length = 150)
 	private String direccion;
 	
+	@Size(min= 8, max= 10, message="El teléfono debe contener al menos 8 dígitos")
 	@Column(name ="telefono", nullable = true, length = 10)
 	private String telefono;
 	
-	@Column(nullable = false, length = 70) // Ejemplo de cómo hacer que el nombre lo asigne de forma automática (omitiéndolo)
+	@NotNull (message="El email no puede ser nulo.")
+	@NotBlank(message="El email es obligatorio y no puede estar vacío.")
+	@Size(min= 10, max= 70, message="Introduce un email válido.")
+	@Email(message="El email enviado no es un formato válido.")
+	@Column(nullable = false, length = 70) 
 	private String email;
 
 	/**

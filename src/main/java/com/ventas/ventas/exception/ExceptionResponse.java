@@ -4,6 +4,7 @@
 package com.ventas.ventas.exception;
 
 import java.util.Date;
+import java.util.Map;
 
 /**
  * @author Óscar Hernández Santos
@@ -14,6 +15,24 @@ public class ExceptionResponse {
 	private Date timestamp;
 	private String mensaje;
 	private String detalles;
+	private Map<String, String> erroresValidacion;
+	
+	/**
+	 * @return the erroresValidacion
+	 */
+	public Map<String, String> getErroresValidacion() {
+		return erroresValidacion;
+	}
+
+	/**
+	 * @param erroresValidacion the erroresValidacion to set
+	 */
+	public void setErroresValidacion(Map<String, String> erroresValidacion) {
+		this.erroresValidacion = erroresValidacion;
+	}
+
+	
+	public ExceptionResponse() {}
 	
 	/**
 	 * @param timestamp
@@ -25,6 +44,20 @@ public class ExceptionResponse {
 		this.timestamp = timestamp;
 		this.mensaje = mensaje;
 		this.detalles = detalles;
+	}
+
+	/**
+	 * @param timestamp
+	 * @param mensaje
+	 * @param detalles
+	 * @param erroresValidacion
+	 */
+	public ExceptionResponse(Date timestamp, String mensaje, String detalles, Map<String, String> erroresValidacion) {
+		super();
+		this.timestamp = timestamp;
+		this.mensaje = mensaje;
+		this.detalles = detalles;
+		this.erroresValidacion = erroresValidacion;
 	}
 
 	/**
