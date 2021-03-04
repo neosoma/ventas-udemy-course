@@ -4,6 +4,7 @@
 package com.ventas.ventas.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -44,6 +45,18 @@ public class ClienteController {
 		return clienteService.findById(idCliente)
 				.map(ResponseEntity::ok)		// Si encuentra el cliente
 				.orElseGet(() -> ResponseEntity.notFound().build());		// Si no lo encuentra -- Utilizamos una función lambda
+		
+		// ATENCION: El bloque de código comentado debajo hace lo mismo que el código de arriba
+		
+//		Optional<Cliente> opt = clienteService.findById(idCliente);
+//		ResponseEntity<Cliente> response = null;
+//		if(opt.isPresent()) {
+//			response = ResponseEntity.ok(opt.get());
+//		}else {
+//			response = ResponseEntity.notFound().build();
+//		}
+//		return response;
+		
 	}
 	
 	@PostMapping
