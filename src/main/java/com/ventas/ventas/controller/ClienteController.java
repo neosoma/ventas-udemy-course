@@ -23,6 +23,7 @@ import com.ventas.ventas.model.Cliente;
 import com.ventas.ventas.service.ClienteService;
 
 /**
+ * 
  * @author Óscar Hernández Santos
  *
  */
