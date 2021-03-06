@@ -49,9 +49,7 @@ Please bear in mind that the supplied parameters to the docker container match t
 
 The standard command to connect to PostgreSQL is the following:
  
- ``` bash
  _psql -h <host> -p <port> -U <username> -W <password> <database>_
- ```
 
 In this case since we specified the user and password for the docker image we have to type:
 
