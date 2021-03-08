@@ -1,6 +1,7 @@
 # Introduction
 
 This is a example project used at [espaciodavinci](https://espaciodavinci.es/) to teach
+
 Spring Boot and ReactJS on a course.
 
 The project is a continuation on the original project used in the Udemy course ["Desarrollo Backend de Servicios REST con Spring Boot y Desarrollo FrontEnd con ReactJS"](https://www.udemy.com/course/iniciate-como-full-stack-developer-con-spring-boot-y-react).This project contains some other extras and curiosities for the learners.
