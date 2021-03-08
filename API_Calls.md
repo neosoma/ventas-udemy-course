@@ -1,4 +1,3 @@
-
 The following file contains examples of requests that can be made using [curl](https://curl.se/) as alternative to [Postman](https://www.postman.com/). 
 
 
@@ -50,4 +49,25 @@ curl -X PUT -H "Content-Type: application/json" \
     -d '{"idCliente": 1, "nombre": "Pepe", "apellidos": "Gonzalez", "direccion": "Calle de la piruleta", "telefono": "0123456789", "email": "pepe.gonzalez@example.com" }' \
     http://localhost:9090/api/clientes
 ```
+
+
+# Create an order (via Postman)
+
+- HTTP verb: POST
+- url: http://localhost:9090/api/pedidos
+- Type: JSON
+- body > raw: 
+{
+    "fechaRealizacion": "2021-03-08T02:17:16.000+00:00",
+    "cliente": {
+       "idCliente": 1
+   },
+   "notas": "Último pedido de la sesión",
+   "precioTotal": 330.0
+}
+
+
+# List all orders (via Postman)
+- HTTP verb: GET
+- URL: http://localhost:9090/api/pedidos
 
