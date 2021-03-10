@@ -7,6 +7,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.ventas.ventas.VentasApplication;
+
 /**
  * 
  * @author Óscar Hernández Santos
@@ -26,6 +30,9 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 @RestController
 public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
+	
+	// Variable que nos permite registrar actividades del Log
+	private static final Logger logger = LoggerFactory.getLogger(VentasApplication.class) ;
 	
 	@ExceptionHandler(Exception.class)
 	public final ResponseEntity<ExceptionResponse> manejarTodasExcepciones (Exception e) {
@@ -41,7 +48,15 @@ public class ResponseExceptionHandler extends ResponseEntityExceptionHandler {
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
 			HttpHeaders headers, HttpStatus status, WebRequest request) {
-			Map<String, String> errors = new HashMap<>();
+			
+		logger.trace ("Este es un mensaje de rastreo...");
+		logger.debug("Esto es un log de depuración.");
+		logger.info("Aportamos algo de información en el Log.");
+		logger.warn("Lanzamos una advertencia.");
+		logger.error("Mi primer Log de error."); // Reiniciar el proyecto para  ver cómo sale el mensaje de log
+		
+		
+		Map<String, String> errors = new HashMap<>();
 			
 			ex.getBindingResult().getAllErrors().forEach((error)-> {
 				String fieldName = ((FieldError) error).getField();
